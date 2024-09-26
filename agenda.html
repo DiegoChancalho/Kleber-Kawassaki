@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/meuestilo.css">
+    <script src="js/bootstrap.js" defer></script>
+    <script src="js/agendar.js" defer></script>
+    <title>Agendar Evento</title>
+    <style>
+        /* Seu estilo existente */
+        .calendar {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .calendar .month {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .calendar .month .date {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .calendar .days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+        }
+        .calendar .days .day {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 60px;
+            border: 1px solid #ddd;
+            cursor: pointer;
+        }
+        .calendar .days .day:hover {
+            background-color: #f0f0f0;
+        }
+        .add-event-wrapper {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .add-event-wrapper.show {
+            display: flex;
+        }
+        .add-event-body {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            max-width: 90%;
+            position: relative;
+        }
+        .add-event-body input,
+        .add-event-body select {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .add-event-body .add-event-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .add-event-body .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        .events {
+            margin-top: 20px;
+        }
+        .events .event {
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .tabs button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 0 10px;
+            border-radius: 5px;
+        }
+        .tabs button.active {
+            background-color: #0056b3;
+        }
+        .whatsapp-btns {
+            display: none;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .whatsapp-btns.active {
+            display: flex;
+        }
+        .whatsapp-btns a {
+            margin: 0 10px;
+            font-size: 24px;
+            color: white;
+            text-decoration: none;
+            background-color: #25d366;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+        }
+        .error-message {
+            color: red;
+            margin-bottom: 10px;
+        }
+        
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-cor-1" id="navbar"> 
+        <div class="container">
+            <a href="index.html" class="navbar-brand cor-clara">
+                <img src="/img/logotipo_-_kleber_kawassaki.png" alt="Logo Kleber Kawassaki" class="img-logo">
+            </a>
+        <div id="navbar-itens">
+            <form class="d-flex" id="form-pesquisa" onsubmit="return handleSearch(event);">
+                <i class="bi bi-search cor-1"></i>
+                <input type="search" class="form-control ms-3" id="search" placeholder="Pesquisar">
+                <button class="btn bg-cor-3" type="submit">Pesquisar</button>
+            </form>                
+            <ul class="navbar-nav mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a href="sobre.html" class="nav-link cor-clara">
+                        <i class="bi bi-person"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="agenda.html" class="nav-link cor-clara">
+                        <i class="bi bi-bag"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>  
+
+<!-- Começo da NAVBAR INFERIOR -->
+
+<nav class="navbar navbar-expand-lg bg-cor-2 p-2" id="container-navbar-inferior">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-inferior" aria-controls="navbar-inferior" aria-expanded="false" aria-label="Botão Menu Hamburguer">
+            <i class="bi bi-list"></i>
+        </button>
+        <ul class="navbar-nav mb-2 mb-lg-0 collapse navbar-collapse" id="navbar-inferior">
+            <li class="navbar-item" id="nav-item">
+                <a href="index.html" class="nav-link">Início</a>
+            </li>
+            <li class="navbar-item">
+                <a href="galeria.html" class="nav-link">Catálogo</a>
+            </li>
+            <li class="navbar-item">
+                <a href="sobre.html" class="nav-link">Sobre</a>
+            </li>
+            <li class="navbar-item">
+                <a href="agenda.html" class="nav-link">Agendamento</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<!-- Fim da NAVBAR INFERIOR -->
+
+    <!-- Calendário -->
+    <div class="calendar">
+        <div class="month">
+            <button class="prev">&lt;</button>
+            <div class="date"></div>
+            <button class="next">&gt;</button>
+        </div>
+        <div class="days"></div>
+    </div>
+
+    <!-- Formulário para adicionar evento -->
+    <div class="add-event-wrapper">
+        <div class="add-event-body">
+            <span class="close" style="color: black;">&times;</span>
+            <div class="title">Adicionar Evento</div>
+            <div class="event-date"></div>
+            <div class="error-message" id="error-message"></div>
+            <input type="text" class="event-name" placeholder="Nome do Evento" required>
+            <input type="time" class="event-time-from" placeholder="Hora de Início" required>
+            <input type="time" class="event-time-to" placeholder="Hora de Término " required>
+            <select class="event-type" required>
+                <option value="foto">Fotografia</option>
+                <option value="video">Vídeo</option>
+            </select>
+            <button class="add-event-btn">Adicionar</button>
+        </div>
+    </div>
+
+    <!-- Eventos -->
+    <div class="events"></div>
+
+    <!-- Abas do WhatsApp -->
+    <div class="tabs">
+        <button data-tab="foto" class="tab-button active">Serviço de Fotografia</button>
+        <button data-tab="video" class="tab-button">Serviço de Vídeo</button>
+    </div>
+
+    <!-- Botões do WhatsApp -->
+    <div class="whatsapp-btns foto active">
+        <a href="#" id="whatsapp-foto" target="_blank">
+            <i class="fab fa-whatsapp"></i> Agendar Foto
+        </a>
+    </div>
+    <div class="whatsapp-btns video">
+        <a href="#" id="whatsapp-video" target="_blank">
+            <i class="fab fa-whatsapp"></i> Agendar Vídeo
+        </a>
+    </div>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>Siga-nos:</p>
+        <div id="redes-sociais">
+            <a href="https://www.instagram.com/kleberkawasakifotografia/" class="cor-1">
+                <i class="bi bi-instagram"></i>
+            </a>
+            <a href="https://wa.me/5555199930589?text=Oi%2C+queria+tirar+uma+d%C3%BAvida" class="cor-1">
+                <i class="bi bi-whatsapp"></i>
+            </a>
+            <a href="https://www.facebook.com/kleberkawasaki?mibextid=ZbWKwL" class="cor-1">
+                <i class="bi bi-facebook"></i>
+            </a>
+            <a href="https://mail.google.com/mail/u/0/#inbox?compose=GTvVlcSKjRFMDswdQsgGrBKGxZhrkLgzlQXwBVbBZdkSmpJFjbWsjbKjvQmGqRDtjGjVVxsHSDtdG" class="cor-1">
+                <i class="bi bi-envelope"></i>
+            </a>
+        </div>
+        <div>
+            <p>Avenida João Osório, 622, loja - Centro São João da Boa Vista / SP</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Suas variáveis existentes
+            const calendar = document.querySelector('.calendar');
+            const dateElement = calendar.querySelector('.date');
+            const daysElement = calendar.querySelector('.days');
+            const prevButton = calendar.querySelector('.prev');
+            const nextButton = calendar.querySelector('.next');
+        
+            const addEventWrapper = document.querySelector('.add-event-wrapper');
+            const addEventBody = document.querySelector('.add-event-body');
+            const closeButton = addEventBody.querySelector('.close');
+            const addEventButton = addEventBody.querySelector('.add-event-btn');
+            const errorMessage = document.querySelector('#error-message');
+        
+            const tabs = document.querySelectorAll('.tab-button');
+            const whatsappBtns = document.querySelectorAll('.whatsapp-btns');
+        
+            let selectedDate = new Date();
+            const events = {};
+        
+            // Função para renderizar o calendário
+            function renderCalendar() {
+                const year = selectedDate.getFullYear();
+                const month = selectedDate.getMonth();
+                const firstDay = new Date(year, month, 1);
+                const lastDay = new Date(year, month + 1, 0);
+                const days = [];
+        
+                for (let i = 1; i < firstDay.getDay(); i++) {
+                    days.push('');
+                }
+        
+                for (let i = 1; i <= lastDay.getDate(); i++) {
+                    days.push(i);
+                }
+        
+                daysElement.innerHTML = days.map(day => {
+                    return `<div class="day${day ? '' : ' empty'}">${day || ''}</div>`;
+                }).join('');
+        
+                dateElement.innerText = `${selectedDate.toLocaleString('default', { month: 'long' })} ${year}`;
+            }
+        
+            // Função para abrir o modal de adicionar evento
+            function openAddEvent(date) {
+                addEventBody.querySelector('.event-date').innerText = `Data: ${date}`;
+                addEventWrapper.classList.add('show');
+            }
+        
+            // Função para fechar o modal de adicionar evento
+            function closeAddEvent() {
+                addEventWrapper.classList.remove('show');
+            }
+        
+            // Função para adicionar o evento
+            function handleAddEvent() {
+    const eventName = addEventBody.querySelector('.event-name').value;
+    const eventTimeFrom = addEventBody.querySelector('.event-time-from').value;
+    const eventTimeTo = addEventBody.querySelector('.event-time-to').value;
+    const eventType = addEventBody.querySelector('.event-type').value;
+
+    if (!eventName || !eventTimeFrom || !eventTimeTo) {
+        errorMessage.innerText = 'Preencha todos os campos.';
+        return;
+    }
+
+    const eventKey = `${selectedDate.getFullYear()}-${selectedDate.getMonth() + 1}-${selectedDate.getDate()}`;
+    if (!events[eventKey]) {
+        events[eventKey] = [];
+    }
+
+    events[eventKey].push({
+        name: eventName,
+        timeFrom: eventTimeFrom,
+        timeTo: eventTimeTo,
+        type: eventType
+    });
+
+    // Atualiza a mensagem do WhatsApp com o tipo de evento
+    const serviceType = eventType === 'foto' ? 'fotografia' : 'vídeo';
+    const whatsappMessage = `Olá, gostaria de agendar um serviço de ${serviceType} para o seguinte evento:\nNome: ${eventName}\nData: ${selectedDate.getFullYear()}-${selectedDate.getMonth() + 1}-${selectedDate.getDate()}\nHorário: ${eventTimeFrom} - ${eventTimeTo}\nObrigado!`;
+
+    // Codifica a mensagem para a URL
+    const encodedMessage = encodeURIComponent(whatsappMessage);
+
+    // Atualiza o link do WhatsApp com a mensagem formatada
+    if (eventType === 'foto') {
+        document.querySelector('#whatsapp-foto').href = `https://wa.me/?phone=5519993058960&text=${encodedMessage}`;
+    } else if (eventType === 'video') {
+        document.querySelector('#whatsapp-video').href = `https://wa.me/?phone=5519991835793&text=${encodedMessage}`;
+    }
+
+    renderEvents();
+    closeAddEvent();
+}   
+            // Atualizar links do WhatsApp
+            function updateWhatsappLinks() {
+                const whatsappFoto = document.querySelector('#whatsapp-foto');
+                const whatsappVideo = document.querySelector('#whatsapp-video');
+        
+                const urlParamsFoto = new URLSearchParams({
+                    phone: '5519993058960', // Substitua pelo seu número de WhatsApp
+                    text: 'Olá! Gostaria de agendar um serviço de fotografia.'
+                });
+        
+                const urlParamsVideo = new URLSearchParams({
+                    phone: '5519991835793', // Substitua pelo seu número de WhatsApp
+                    text: 'Olá! Gostaria de agendar um serviço de vídeo.'
+                });
+        
+                whatsappFoto.href = `https://wa.me/?${urlParamsFoto.toString()}`;
+                whatsappVideo.href = `https://wa.me/?${urlParamsVideo.toString()}`;
+            }
+        
+            // Event listeners
+            prevButton.addEventListener('click', () => {
+                selectedDate.setMonth(selectedDate.getMonth() - 1);
+                renderCalendar();
+            });
+        
+            nextButton.addEventListener('click', () => {
+                selectedDate.setMonth(selectedDate.getMonth() + 1);
+                renderCalendar();
+            });
+        
+            daysElement.addEventListener('click', (event) => {
+                if (event.target.classList.contains('day') && event.target.innerText) {
+                    const day = event.target.innerText;
+                    const date = `${selectedDate.getFullYear()}-${selectedDate.getMonth() + 1}-${day}`;
+                    openAddEvent(date);
+                }
+            });
+        
+            closeButton.addEventListener('click', closeAddEvent);
+            addEventButton.addEventListener('click', handleAddEvent);
+        
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+        
+                    whatsappBtns.forEach(btn => btn.classList.remove('active'));
+                    document.querySelector(`.whatsapp-btns.${tab.getAttribute('data-tab')}`).classList.add('active');
+        
+                    updateWhatsappLinks();
+                });
+            });
+        
+            renderCalendar();
+            updateWhatsappLinks(); // Chama a função para garantir que os links estejam atualizados
+        });
+        </script>
+        
+</body>
+</html>
+
+<!-- Botão do WhatsApp -->
+
+</body>
+</html>

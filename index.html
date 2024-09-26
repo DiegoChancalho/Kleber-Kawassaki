@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/meuestilo.css">
+    <script src="js/bootstrap.js" defer></script>
+    <script src="/js/script.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Kleber Kawassaki</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-cor-1" id="navbar"> 
+            <div class="container">
+                <a href="index.html" class="navbar-brand cor-clara">
+                    <img src="/img/logotipo_-_kleber_kawassaki.png" alt="Logo Kleber Kawassaki" class="img-logo">
+                </a>
+            <div id="navbar-itens">
+                <form class="d-flex" id="form-pesquisa" onsubmit="return handleSearch(event);">
+                    <i class="bi bi-search cor-1"></i>
+                    <input type="search" class="form-control ms-3" id="search" placeholder="Pesquisar">
+                    <button class="btn bg-cor-3" type="submit">Pesquisar</button>
+                </form>                
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a href="sobre.html" class="nav-link cor-clara">
+                            <i class="bi bi-person"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="agenda.html" class="nav-link cor-clara">
+                            <i class="bi bi-bag"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>  
+
+    <!-- Começo da NAVBAR INFERIOR -->
+
+    <nav class="navbar navbar-expand-lg bg-cor-2 p-2" id="container-navbar-inferior">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-inferior" aria-controls="navbar-inferior" aria-expanded="false" aria-label="Botão Menu Hamburguer">
+                <i class="bi bi-list"></i>
+            </button>
+            <ul class="navbar-nav mb-2 mb-lg-0 collapse navbar-collapse" id="navbar-inferior">
+                <li class="navbar-item" id="nav-item">
+                    <a href="index.html" class="nav-link">Início</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="galeria.html" class="nav-link">Catálogo</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="sobre.html" class="nav-link">Sobre</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="agenda.html" class="nav-link">Agendamento</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Fim da NAVBAR INFERIOR -->
+
+    <!-- BANNERS -->
+    <div id="carouselExampleCaptions" class="carousel slide">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="/img/15years/ANA LAURA 15 ANOS/06.JPG" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Ana Laura</h5>
+                    <p>Debutante</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="/img/casamento/LEIDE E BRUNO/02.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Leide & Bruno</h5>
+                    <p>Casamento</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="/img/ensaio/GABRIEL E YULLI/ENSAIO-1178.JPG" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Gabriel & Yulli</h5>
+                    <p>Ensaio</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <!-- Fim dos Banners -->
+
+    <!-- Começo do Seja Bem Vindo -->
+    <div id="BemVindo">
+        <h4>Seja Bem-Vindo</h4>
+        <p>
+            Desde 2006, a Kleber Kawassaki se especializa em fotografia e audiovisual, oferecendo um serviço diferenciado e de
+            alta qualidade para capturar momentos únicos e inesquecíveis. Com uma equipe altamente qualificada e apaixonada pelo que faz, 
+            utilizamos equipamentos de última geração para garantir que cada detalhe dos seus eventos seja registrado com perfeição.
+            Nossa expertise abrange uma ampla gama de eventos, incluindo casamentos, festas de debutantes, ensaios fotográficos e diversas outras ocasiões especiais.
+            Cada projeto é abordado com um olhar cuidadoso e personalizado, assegurando que suas memórias sejam transformadas em verdadeiras obras de arte.
+            Nosso compromisso é com a excelência e a satisfação dos nossos clientes, oferecendo um atendimento personalizado que reflete a importância de cada momento capturado.
+            Convidamos você a conhecer nossos serviços e a nos permitir a honra de registrar os momentos mais significativos da sua vida com a qualidade e o carinho que você merece.
+        </p>
+        <h5>Kleber Kawassaki & Pâmela</h5>
+    </div>
+    <!-- Fim do Seja Bem Vindo -->
+
+
+    <!-- Seção de Depoimentos -->
+<div class="wrapper">
+    <i id="left" class="fa-solid fa-angle-left"></i>
+    <ul class="carousel" id="carouseldois">
+        <li class="card">
+            <div class="img">
+                <img src="img/casamento/FRED/01 (51).JPG" alt="Depoimento 1">
+            </div>
+            <h3>Ana</h3>
+            <span>Noiva</span>
+            <p>“A experiência com a Kleber Kawassaki foi incrível. As fotos do meu casamento capturaram cada detalhe com uma qualidade excepcional. Super recomendo!”</p>
+        </li>
+        <li class="card">
+            <div class="img">
+                <img src="img/casamento/ANDERSON/CASAMENTO 02-61.jpg" alt="Depoimento 2">
+            </div>
+            <h3>Anderson</h3>
+            <span>Noivo</span>
+            <p>“Excelente trabalho, tanto na fotografia quanto no atendimento. A equipe foi super profissional e atenciosa durante todo o evento.”</p>
+        </li>
+        <li class="card">
+            <div class="img">
+                <img src="img/gestante/MAYARA/ABC_4429.JPG" alt="Depoimento 3">
+            </div>
+            <h3>Mayara</h3>
+            <span>Gestante</span>
+            <p>“Fiquei encantada com o ensaio gestante. As fotos ficaram lindas e capturaram perfeitamente a magia desse momento especial.”</p>
+        </li>
+        <li class="card">
+            <div class="img">
+                <img src="img/casamento/MAYNARA/CASAMENTO-80.jpg" alt="Depoimento 4">
+            </div>
+            <h3>Mayara</h3>
+            <span>Noiva</span>
+            <p>“O Kleber e sua equipe são verdadeiros artistas. As fotos do nosso casamento ficaram simplesmente perfeitas. Agradecemos muito!”</p>
+        </li>
+        <li class="card">
+            <div class="img">
+                <img src="img/casamento/MIRELLA/ENSAIO-80.JPG" alt="Depoimento 5">
+            </div>
+            <h3>Mirella</h3>
+            <span>Noiva</span>
+            <p>“O trabalho da Kleber Kawassaki superou todas as minhas expectativas. O resultado foi maravilhoso e trouxe à tona toda a emoção do nosso grande dia.”</p>
+        </li>
+        <!-- Adicione mais depoimentos conforme necessário -->
+    </ul>
+    <i id="right" class="fa-solid fa-angle-right"></i>
+</div>
+<!-- Fim da Seção Depoimentos -->
+
+
+    <script src="js/bootstrap.bundle.js"></script>
+    <script>
+        // Função para rolar o carrossel para a esquerda
+        document.getElementById('left').addEventListener('click', function() {
+            const carousel = document.getElementById('carouseldois');
+            carousel.scrollBy({
+                left: -250, // Ajuste conforme necessário
+                behavior: 'smooth'
+            });
+        });
+
+        // Função para rolar o carrossel para a direita
+        document.getElementById('right').addEventListener('click', function() {
+            const carousel = document.getElementById('carouseldois');
+            carousel.scrollBy({
+                left: 250, // Ajuste conforme necessário
+                behavior: 'smooth'
+            });
+        });
+    </script>
+
+    <!-- Início mini-banners -->
+    <div class="container" id="mini-banners-container">
+        <div class="row justify-content-around">
+            <div class="col-12 bg-escura" id="mini-banner-1">
+                <h2>Casamento</h2>
+                <img src="/img/corporativo/DIEGO ASSIS/Diego-132.JPG" alt="casamento1">
+                <a href="/galeria.html">Veja já</a>
+            </div>
+            <div class="col-12 bg-cor-2" id="mini-banner-2">
+                <h2>Debutante</h2>
+                <img src="img/15years/ANA LAURA 15 ANOS/ANA LAURA-161.JPG" alt="casamento2">
+                <a href="/galeria.html">Veja já</a>
+            </div>
+            <div class="col-12 bg-escura" id="mini-banner-3">
+                <h2>Ensaios</h2>
+                <img src="img/ensaio/Nova pasta/ENSAIO-144.JPG" alt="casamento3">
+                <a href="/galeria.html">Veja já</a>
+            </div>
+        </div>
+    </div>
+    <!-- Fim dos mini-banners -->
+
+    <!-- Rodapé -->
+    <footer>
+        <p>Siga-nos:</p>
+        <div id="redes-sociais">
+            <a href="https://www.instagram.com/kleberkawasakifotografia/" class="cor-1">
+                <i class="bi bi-instagram"></i>
+            </a>
+            <a href="https://wa.me/5555199930589?text=Oi%2C+queria+tirar+uma+d%C3%BAvida" class="cor-1">
+                <i class="bi bi-whatsapp"></i>
+            </a>
+            <a href="https://www.facebook.com/kleberkawasaki?mibextid=ZbWKwL" class="cor-1">
+                <i class="bi bi-facebook"></i>
+            </a>
+            <a href="https://mail.google.com/mail/u/0/#inbox?compose=GTvVlcSKjRFMDswdQsgGrBKGxZhrkLgzlQXwBVbBZdkSmpJFjbWsjbKjvQmGqRDtjGjVVxsHSDtdG" class="cor-1">
+                <i class="bi bi-envelope"></i>
+            </a>
+        </div>
+        <div>
+            <p>Avenida João Osório, 622, loja - Centro São João da Boa Vista / SP</p>
+        </div>
+    </footer>
+
+    <script>
+        function handleSearch(event) {
+            event.preventDefault(); // Impede o envio padrão do formulário
+            const query = document.getElementById('search').value.toLowerCase();
+            if (query === 'casamento') {
+                window.location.href = 'galeria.html#casamentos'; // Redireciona para a seção de casamentos
+            } else {
+                alert('Não foi possível encontrar o que você procura.');
+                // Caso deseje redirecionar para outra página ou mostrar um resultado diferente
+            }
+        }
+    </script>
+    
+
+    <!-- Botão do WhatsApp -->
+    <a href="https://api.whatsapp.com/send?phone=5519993058960&text=Olá%2C%20gostaria%20de%20mais%20informações." class="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+</body>
+</html>
+
+<style scoped>
+    .carousel {
+        width: 750px;
+        margin: 0 auto; /* Centraliza o carrossel horizontalmente */
+    }
+  
+    .wrapper {
+        max-width: 1100px;
+        width: 100%;
+        position: relative;
+        margin: 0 auto; /* Centraliza a wrapper horizontalmente */
+        padding: 40px 0; /* Adiciona espaçamento superior e inferior */
+        text-align: center; /* Centraliza o texto dentro da wrapper */
+    }
+  
+    .wrapper i {
+        top: 50%;
+        height: 50px;
+        width: 50px;
+        cursor: pointer;
+        font-size: 1.25rem;
+        position: absolute;
+        text-align: center;
+        line-height: 50px;
+        background: #000; /* Cor de fundo das setas */
+        color: #fff; /* Cor dos ícones das setas */
+        border-radius: 50%;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.23);
+        transform: translateY(-50%);
+        transition: transform 0.1s linear;
+    }
+  
+    .wrapper i:active {
+        transform: translateY(-50%) scale(0.85);
+    }
+  
+    .wrapper i:first-child {
+        left: -22px;
+    }
+  
+    .wrapper i:last-child {
+        right: -22px;
+    }
+  
+    .wrapper .carousel {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: calc((100% / 3) - 12px);
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 16px;
+        border-radius: 8px;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+        margin: 0 auto; /* Centraliza o carrossel dentro da wrapper */
+    }
+  
+    .carousel::-webkit-scrollbar {
+        display: none;
+    }
+  
+    .carousel.no-transition {
+        scroll-behavior: auto;
+    }
+  
+    .carousel.dragging {
+        scroll-snap-type: none;
+        scroll-behavior: auto;
+    }
+  
+    .carousel.dragging .card {
+        cursor: grab;
+        user-select: none;
+    }
+  
+    .carousel :where(.card, .img) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+  
+    .carousel .card {
+        scroll-snap-align: start;
+        height: 400px;
+        list-style: none;
+        background: #4e4e4e;
+        cursor: pointer;
+        padding-bottom: 6px;
+        flex-direction: column;
+        border-radius: 8px;
+    }
+  
+    .carousel .card .img {
+        background: #ffffff;
+        height: 148px;
+        width: 148px;
+        border-radius: 50%;
+    }
+  
+    .card .img img {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 0.5px solid #ffffff;
+    }
+  
+    .carousel .card h2 {
+        font-weight: 500;
+        font-size: 1.0rem;
+        margin: 30px 0 5px;
+        color: #ffffff; /* Cor do texto dos títulos dos cards */
+    }
+  
+    .carousel .card span {
+        color: #ffffff; /* Cor do texto das descrições dos cards */
+        font-size: 1.31rem;
+    }
+  
+    .carousel p {
+        color: #ffffff; /* Cor do texto dos parágrafos */
+        font-size: 1rem; /* Tamanho da fonte dos parágrafos */
+        margin: 10px 0; /* Margem superior e inferior para separar os parágrafos */
+    }
+  
+    @media screen and (max-width: 900px) {
+        .wrapper .carousel {
+            grid-auto-columns: calc((100% / 2) - 9px);
+        }
+    }
+  
+    @media screen and (max-width: 600px) {
+        .wrapper .carousel {
+            grid-auto-columns: 100%;
+        }
+    }
+
+/* Estilos para o botão do WhatsApp */
+.whatsapp-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366; /* Cor do WhatsApp */
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+        .whatsapp-btn i {
+            margin-right: 0;
+        }
+</style>
